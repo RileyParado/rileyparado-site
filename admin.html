@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Portfolio editor | Riley Parado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.adm{max-width:46rem;margin:0 auto;padding:2.5rem var(--pad) 4rem}
+.adm h1{font:700 2rem/1.2 var(--serif);margin:0 0 .5rem}
+.adm h2{font:700 1.4rem/1.2 var(--serif);margin:2.5rem 0 .8rem}
+.adm label{display:block;font-weight:600;margin:1rem 0 .3rem}
+.adm input[type=text],.adm input[type=number],.adm input[type=password],.adm textarea{width:100%;font:inherit;padding:.55rem .7rem;border:1px solid #b9b19f;background:#fffdf8;color:var(--ink)}
+.adm textarea{min-height:11rem}
+.adm button{font:600 1.05rem var(--serif);padding:.55rem 1.2rem;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+.adm button.alt{background:transparent;color:var(--ink)}
+.adm button:disabled{opacity:.5;cursor:wait}
+.adm details{border:1px solid var(--rule);padding:.8rem 1rem;margin:1.2rem 0}
+.adm summary{cursor:pointer}
+.row{display:flex;gap:1rem;flex-wrap:wrap}.row>*{flex:1 1 12rem}
+.hint{color:var(--muted);font-size:1rem;margin:.3rem 0 0}
+.elist{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
+.elist li{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+.keep{display:flex;gap:.8rem;flex-wrap:wrap}
+.keep figure{margin:0;width:7rem}
+.keep img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.keep label{font-weight:400;margin:.3rem 0 0}
+#docLabels input{margin-top:.4rem}
+.msg{margin:.8rem 0 0;font-weight:600}.msg.err{color:#9b1c1c}
+</style>
+</head>
+<body>
+<main class="adm">
+  <h1>Portfolio editor</h1>
+  <p class="hint">Saves straight to your GitHub repository. Your site updates a minute or two after each save.</p>
+
+  <details id="conn" open>
+    <summary><strong>Connection</strong></summary>
+    <div class="row">
+      <div><label for="owner">GitHub username</label><input type="text" id="owner" autocomplete="off"></div>
+      <div><label for="repo">Repository name</label><input type="text" id="repo" autocomplete="off"></div>
+    </div>
+    <label for="token">Access token</label>
+    <input type="password" id="token" autocomplete="off">
+    <p class="hint">A fine-grained token for this one repository with Contents: Read and write. It stays in this browser only. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Create one</a>.</p>
+    <p><button id="connect" type="button">Save and load entries</button> <button id="forget" class="alt" type="button">Forget token</button></p>
+    <p id="cmsg" class="msg" role="status"></p>
+  </details>
+
+  <h2>Your entries</h2>
+  <ul id="entries" class="elist"></ul>
+
+  <h2 id="formTitle">Add a project</h2>
+  <div id="form">
+    <label for="title">Title</label><input type="text" id="title">
+    <div class="row"><div><label for="year">Year</label><input type="number" id="year"></div></div>
+    <label for="desc">What I did</label><textarea id="desc"></textarea>
+    <p class="hint">A blank line starts a new paragraph. Start a line with "- " for a bullet. **bold** works.</p>
+    <label for="sum">Card summary (optional)</label><input type="text" id="sum">
+    <p class="hint">Short teaser for the home page. Leave blank to use the start of the description.</p>
+    <label>Current photos</label><div id="keepImgs" class="keep"></div>
+    <label for="imgs">Add photos</label><input type="file" id="imgs" accept="image/*" multiple>
+    <label>Current documents</label><div id="keepDocs"></div>
+    <label for="docs">Add documents (PDFs, schematics, reports)</label><input type="file" id="docs" multiple>
+    <div id="docLabels"></div>
+    <p><button id="save" type="button">Save to site</button> <button id="reset" class="alt" type="button">Clear form</button></p>
+    <p id="msg" class="msg" role="status"></p>
+  </div>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>
