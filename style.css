@@ -6,7 +6,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;}
 html{overscroll-behavior:none;}
-html{font-size:0.9rem;}
+html{font-size:0.85rem;}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.2rem/1.55 var(--serif)}
 a{color:var(--link)}
