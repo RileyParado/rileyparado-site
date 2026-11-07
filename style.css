@@ -1,6 +1,6 @@
 :root{
   --bg:#FFF5E4; --ink:#1b1b1b; --muted:#585247; --rule:#D8D0C0;
-  --bar:#1c1c1c; --link:#1f4fb5; --wrap:62rem; --pad:clamp(1.25rem,4vw,2rem);
+  --bar:#1c1c1c; --link:#1f4fb5; --wrap:85rem; --pad:clamp(1.25rem,4vw,2rem);
   --serif:"EB Garamond",Georgia,"Times New Roman",serif;
 }
 *{box-sizing:border-box}
